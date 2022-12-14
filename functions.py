@@ -1,3 +1,9 @@
+import matplotlib.animation as animation
+import os
+import re
+from classes import ImageData
+import matplotlib.pyplot as plt
+
 def relative_growth_rate(image_before : ImageData, image_after : ImageData):
     """
     Plot an image of growth rates for different pixels

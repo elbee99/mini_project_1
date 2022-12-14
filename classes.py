@@ -1,3 +1,10 @@
+import numpy as np
+import matplotlib.colorbar as colorbar
+import matplotlib.pyplot as plt
+import nanofilm
+from nanofilm.ndimage import imread
+
+
 class ImageData():
     """
     This is a class which utilises the image data exported by a 
@@ -41,12 +48,12 @@ class ImageData():
             title = "Thickness plot after time = {} units".format(self.time)
         ax.set_title(title)
 
-    def return_image(self,ax : ax):
+    def return_image(self,ax):
         """
         This is for when plotting an animated graph we need to return an
         image object of the type im = ax.imshow() from matplotlib
         Args:
-            ax (ax): This is a matplotlib.axes object, as returned when doing
+            ax (ax): This is a matplotlib.axes.Axes object e.g. as returned when doing
             fig, ax = plt.subplots()
         """
         im = ax.imshow(self.array,animated = True)
