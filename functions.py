@@ -2,7 +2,12 @@ import matplotlib.animation as animation
 import os
 import re
 from classes import ImageData
+import numpy as np
 import matplotlib.pyplot as plt
+from sklearn.cluster import KMeans
+from yellowbrick.cluster import KElbowVisualizer
+from nanofilm.ndimage import imread
+
 
 def relative_growth_rate(image_before : ImageData, image_after : ImageData):
     """
@@ -95,3 +100,41 @@ def generate_data_list(folder_path : str):
 
     # sorts the list in ascending order of time and returns
     return sorted(accurion_path_list, key = lambda x: x[1])
+
+def image_to_X(image_path : str):
+    image_array = imread(image_path)
+    return image_array.reshape(np.shape(image_array)[0]*np.shape(image_array)[1],1)
+
+image_path_1470min = r"C:\Users\lb958\Data\2022_12_16_Cu_in_air_run_02\maps\thickness_maps\Cu_50C_0_run01_003.png"
+
+def get_im_width(image_path : str):
+    image_array = imread(image_path)
+    return np.shape(image_array)[1]
+
+def get_im_height(image_path : str):
+    image_array = imread(image_path)
+    return np.shape(image_array)[0]
+
+def X_to_image(image_data : np.ndarray,image_path : str):
+    width = get_im_width(image_path)
+    height = get_im_height(image_path)
+    return np.reshape(image_data,[height,width,1])
+
+def segment_image(image_path, n_clusters):
+
+    image_data = image_to_X(image_path)
+    km = KMeans(n_clusters = n_clusters)
+    km.fit(image_data)
+    X_km = km.cluster_centers_[km.predict(image_data)]
+    X_km = X_km.astype("uint8")
+
+    img_km = X_to_image(X_km,image_path)
+    plt.imshow(img_km)
+    plt.show()
+
+def plot_optimal_k(image_path):
+    image_data = image_to_X(image_path)
+    km = KMeans()
+    visualizer = KElbowVisualizer(km,k=(2,20))
+    visualizer.fit(image_data)
+    visualizer.show()
