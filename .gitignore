@@ -2,6 +2,9 @@
 *.gif
 *.mp4
 
+# saved data
+*.pkl
+
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]

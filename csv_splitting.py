@@ -11,10 +11,18 @@ import shutil
 # png_filename = r"Cu_Tile_150Cmaps_20230111-102540.ds.png"
 # xml_filename = r"Cu_Tile_150Cmaps_20230111-102540.dsinfo.xml"
 
-dat_folder = r"C:\Users\lb958\Data\2023_01_25_Cu_120C\maps"
-dat_filename = r"Cu_Tile_120C_map_20230125-131101.ds.dat"
-png_filename = r"Cu_Tile_120C_map_20230125-131101.ds.png"
-xml_filename = r"Cu_Tile_120C_map_20230125-131101.dsinfo.xml"
+    
+
+
+# dat_folder = r"C:\Users\lb958\Data\2023_01_25_Cu_120C\maps"
+# dat_filename = r"Cu_Tile_120C_map_20230125-131101.ds.dat"
+# png_filename = r"Cu_Tile_120C_map_20230125-131101.ds.png"
+# xml_filename = r"Cu_Tile_120C_map_20230125-131101.dsinfo.xml"
+dat_folder = r"C:\Users\lb958\Data\2023_01_31_Cu-Gr_Sample1\maps"
+dat_filename = r"Cu-Gr_120C_sample1_20230131-170515.ds.dat"
+png_filename = r"Cu-Gr_120C_sample1_20230131-170515.ds.png"
+xml_filename = r"Cu-Gr_120C_sample1_20230131-170515.dsinfo.xml"
+
 
 dat_path = os.path.join(dat_folder,dat_filename)
 png_path = os.path.join(dat_folder,png_filename)
